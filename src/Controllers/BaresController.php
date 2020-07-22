@@ -20,6 +20,11 @@ class BaresController extends BaseController{
         ->withHeader('Content-Type', 'application/json')
         ->withStatus(200);
     }
+
+    public function inicio($request, $response, $args){
+        $response->getBody()->write("API RESTFUL con Slim 4 para Ionic 4");
+        return $response;
+    }
 }
 
 ?>

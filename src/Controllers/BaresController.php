@@ -7,14 +7,18 @@ use App\Controllers\BaseController;
 class BaresController extends BaseController{
     public function getAll($request, $response, $args){
         
-        $configuraciones = $this->container->get('db_settings');
+        $pdo = $this->container->get('db');
 
-        echo '<pre>';
-        var_dump($configuraciones);
-        echo '</pre>';
+        $query = $pdo->query("SELECT * FROM bar");
+        
+        //echo '<pre>';
+        //var_dump($query->fetchAll());
+        //echo '</pre>';
 
-        $response->getBody()->write("Hello world Bares!");
-        return $response;
+        $response->getBody()->write(json_encode($query->fetchAll()));
+        return $response
+        ->withHeader('Content-Type', 'application/json')
+        ->withStatus(200);
     }
 }
 

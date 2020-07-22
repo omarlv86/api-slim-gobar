@@ -22,7 +22,7 @@ class BaresController extends BaseController{
     }
 
     public function inicio($request, $response, $args){
-        $response->getBody()->write("API RESTFUL con Slim 4 para Ionic 4");
+        $response->getBody()->write("<h1>API RESTFUL con Slim 4 para Ionic 4</h1>");
         return $response;
     }
 }
